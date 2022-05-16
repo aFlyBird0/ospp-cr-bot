@@ -2,14 +2,13 @@ platforms:
   git:
     github:
       enabled: true
-      token: github-token
+      owner: github-owner
     gitlab:
       enabled: false
-      token: gitlab-token
+      owner: gitlab-owner
   community:
     feishu:
       enabled: true
-      token: feishu-token
 users:
   - git:
       github: github-user-1

@@ -3,17 +3,15 @@ platforms:
   git:
     github:
       enabled: true
-      token: github-token
+      owner: github-owner
     gitlab:
       enabled: false
-      token: gitlab-token
+      owner: gitlab-owner
   community:
     feishu:
       enabled: true
-      token: feishu-token
     dingtalk:
       enabled: false
-      token: dingtalk-token
 users:
   - git:
       github: github-user-1
