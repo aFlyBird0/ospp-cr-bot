@@ -6,7 +6,7 @@
 1. 将 `config.yml` 中的对应信息替换为自己的，并设置 `github_token` 环境变量。
 2. 运行 `cmd/main.go` 中的主函数。
 ### mock
-1. 将 `config/mini-for-mock.yaml` 重命名为 `config.yaml` 并放置到根目录下。
+1. 将 `examples/mini-for-mock.yaml` 重命名为 `config.yaml` 并放置到根目录下。
 2. 将 `internal/notify/main.go` 中的  
 `import _ "github.com/devstream-io/devstream/ospp-cr-bot/internal/git/github"` 替换为，  
 `import _ "github.com/devstream-io/devstream/ospp-cr-bot/internal/git/githubMock"`
