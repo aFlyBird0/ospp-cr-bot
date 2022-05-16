@@ -21,12 +21,13 @@ type Issue interface {
 	GetTitle() string
 	GetBody() string
 	GetLabels() []string
-	GetAssignees() []string // todo replace with git.User
+	GetAssignees() []User
 	ListComments() []Comment
 	GetState() IssueState
 	GetURL() string
 }
 
+// todo modify interface
 type Comment interface {
 	TimeAt
 
@@ -45,7 +46,7 @@ type IssueComment interface {
 type Commit interface {
 	TimeAt
 
-	GetID() string
+	GetID() int64
 	GetMessage() string
 	GetURL() string
 	GetAuthor() User
@@ -83,10 +84,8 @@ type Platform interface {
 	GetType() PlatformType
 	GetRepoInfo(repoName string) (Repo, error)
 	ListRepos() []Repo
-	ListIssuesByRepo(repo Repo) ([]Issue, error)
-	ListIssuesByRepoWithFilter(repo Repo, filter IssueFilter) ([]Issue, error)
-	ListPrsByRepo(repo Repo) ([]PullRequest, error)
-	ListPrsByRepoWithFilter(repo Repo, filter PrFilter) ([]PullRequest, error)
+	ListIssuesByRepo(repo Repo, filter IssueFilter) ([]Issue, error)
+	ListPrsByRepo(repo Repo, filter PrFilter) ([]PullRequest, error)
 }
 
 // IssueFilter is used to filter issues by state

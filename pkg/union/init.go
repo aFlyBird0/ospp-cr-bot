@@ -2,9 +2,11 @@ package union
 
 import (
 	"fmt"
+
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/community"
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
-	"log"
+
+	"github.com/devstream-io/devstream/pkg/util/log"
 )
 
 // union interfaces from other packages
@@ -37,12 +39,16 @@ func Init() {
 
 	errs := registerUsersFromConfig()
 	for _, err := range errs {
-		log.Printf("Error during init users: %v", err)
+		log.Warnf("Error during init users: %v", err)
 	}
 
-	errs = initReposAndGroups()
+	errs, panics := initReposAndGroups()
 	for _, err := range errs {
-		log.Printf("Error during init repos and groups : %v", err)
+		log.Errorf("Error during init repos and groups : %v", err)
+	}
+
+	for _, panicErr := range panics {
+		log.Fatalf("Fatal Error during init repos and groups : %v", panicErr)
 	}
 
 }
@@ -76,27 +82,19 @@ func registerUsersFromConfig() (errors []error) {
 	return
 }
 
-func initReposAndGroups() (errs []error) {
+func initReposAndGroups() (errs []error, panicErrs []error) {
 	reposFromConfig := getRepoConfigs()
 	for _, repo := range reposFromConfig {
 
-		// pre-check
-		if repo.Platform == "" || repo.Name == "" {
-			errs = append(errs, fmt.Errorf("repo config error: platform or name is empty"))
-			continue
-		}
-		if len(repo.Groups) == 0 {
-			errs = append(errs, fmt.Errorf("repo %s has no groups", repo.Name))
-			continue
-		}
-		if len(repo.Users) == 0 {
-			errs = append(errs, fmt.Errorf("repo %s has no users", repo.Name))
+		if preCheckErrs := preCheckRepoConfig(repo); len(preCheckErrs) > 0 {
+			errs = append(errs, preCheckErrs...)
 			continue
 		}
 
 		groups := make([]community.Group, 0)
 		admins := make([]git.User, 0)
 		users := make([]git.User, 0)
+
 		for g, id := range repo.Groups {
 			if g, err := community.RegisterGroup(community.Type(g), id); err != nil {
 				errs = append(errs, err)
@@ -123,10 +121,8 @@ func initReposAndGroups() (errs []error) {
 		if len(groups) > 0 && len(users) > 0 {
 			gitRepo, err := git.GetPlatformByType(git.PlatformType(repo.Platform)).GetRepoInfo(repo.Name)
 			if err != nil {
-				for _, e := range errs {
-					log.Printf("%s", e)
-				}
-				panic(fmt.Errorf("get repo %s of %s info error: %v", repo.Name, repo.Platform, err))
+				panicErrs = append(panicErrs, fmt.Errorf("get repo %s of %s info error: %v", repo.Name, repo.Platform, err))
+				continue
 			}
 			allRepos = append(allRepos, &Repo{
 				GitRepo: gitRepo,
@@ -139,4 +135,18 @@ func initReposAndGroups() (errs []error) {
 		}
 	}
 	return
+}
+
+func preCheckRepoConfig(repo *RepoConfig) (errs []error) {
+	// pre-check
+	if repo.Platform == "" || repo.Name == "" {
+		errs = append(errs, fmt.Errorf("repo config error: platform or name is empty"))
+	}
+	if len(repo.Groups) == 0 {
+		errs = append(errs, fmt.Errorf("repo %s has no groups", repo.Name))
+	}
+	if len(repo.Users) == 0 {
+		errs = append(errs, fmt.Errorf("repo %s has no users", repo.Name))
+	}
+	return errs
 }

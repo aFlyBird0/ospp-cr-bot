@@ -26,6 +26,7 @@ type Community interface {
 	SendMessageToUsers(message message.MessageInf, users []User) error
 	SendMessageToGroup(message message.MessageInf, group Group) error
 	SendMessageToUsersInGroup(message message.MessageInf, users []User, group Group) error
+	SendMessageToUserInGroup(message message.MessageInf, users User, group Group) error
 }
 
 type NeedRefresh interface {

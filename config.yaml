@@ -2,22 +2,20 @@ platforms:
   git:
     github:
       enabled: true
-      token: github-token
+      owner: aFlyBird0
     gitlab:
       enabled: false
-      token: gitlab-token
   community:
     feishu:
       enabled: true
-      token: feishu-token
 users:
   - git:
-      github: github-user-1
+      github: aFlyBird0
     community:
-      feishu: feishu-user-1
+      feishu: feishu-aFlyBird0
   - git:
       github: github-user-2
-      gitlab: gitlab-user-2 # define a wrong user to test git platform register check
+#      gitlab: gitlab-user-2 # define a wrong user to test git platform register check
     community:
       feishu: feishu-user-2
   - git:
@@ -30,11 +28,11 @@ users:
       feishu: feishu-user-4
 repos:
   - platform: github
-    name: github-repo-1
+    name: cr-bot-test
     groups:
       feishu: feishu-group-1
     admins:
-      - github-user-1
+      - aFlyBird0
     users:
       - github-user-3
       - github-user-4

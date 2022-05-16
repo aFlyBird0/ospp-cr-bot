@@ -3,6 +3,7 @@ package github
 import (
 	"context"
 	"fmt"
+	"github.com/devstream-io/devstream/pkg/util/log"
 	"net/http"
 	"os"
 	"testing"
@@ -50,15 +51,15 @@ func TestGithubWebhook(t *testing.T) {
 	// add callbacks
 	handle.OnIssueCommentCreated(
 		func(deliveryID string, eventName string, event *github.IssueCommentEvent) error {
-			fmt.Printf("%#v made a comment!\n", event.Sender)
-			fmt.Printf("%#v\n", event.Comment)
+			log.Infof("%#v made a comment!\n", event.Sender)
+			log.Infof("%#v\n", event.Comment)
 			return nil
 		},
 	)
 
 	handle.OnPullRequestEventAny(
 		func(deliveryID string, eventName string, event *github.PullRequestEvent) error {
-			fmt.Printf("%s made a pull request!", event.Sender.Login)
+			log.Infof("%s made a pull request!", event.Sender.Login)
 			return nil
 		},
 	)

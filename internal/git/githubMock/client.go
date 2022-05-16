@@ -33,28 +33,14 @@ func (c *Client) ListRepos() []git.Repo {
 	}
 }
 
-func (c *Client) ListIssuesByRepo(repo git.Repo) ([]git.Issue, error) {
+func (c *Client) ListIssuesByRepo(repo git.Repo, filter git.IssueFilter) ([]git.Issue, error) {
 	return []git.Issue{
 		&Issue{Title: "issue1", Body: "body1"},
 		&Issue{Title: "issue2", Body: "body2"},
 	}, nil
 }
 
-func (c *Client) ListIssuesByRepoWithFilter(repo git.Repo, filter git.IssueFilter) ([]git.Issue, error) {
-	return []git.Issue{
-		&Issue{Title: "issue1", Body: "body1"},
-		&Issue{Title: "issue2", Body: "body2"},
-	}, nil
-}
-
-func (c *Client) ListPrsByRepo(repo git.Repo) ([]git.PullRequest, error) {
-	return []git.PullRequest{
-		&PR{Title: "pr1", Body: "body1", Assignees: []*User{&User{Login: "github-user-1"}}, Number: 18},
-		&PR{Title: "pr2", Body: "body2", Assignees: []*User{&User{Login: "github-user-2"}}, Number: 36},
-	}, nil
-}
-
-func (c *Client) ListPrsByRepoWithFilter(repo git.Repo, filter git.PrFilter) ([]git.PullRequest, error) {
+func (c *Client) ListPrsByRepo(repo git.Repo, filter git.PrFilter) ([]git.PullRequest, error) {
 	return []git.PullRequest{
 		&PR{Title: "pr1", Body: "body1", Assignees: []*User{&User{Login: "github-user-1"}}},
 		&PR{Title: "pr2", Body: "body2", Assignees: []*User{&User{Login: "github-user-2"}}},

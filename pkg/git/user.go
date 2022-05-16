@@ -23,19 +23,6 @@ func (u *user) OfPlatform() Platform {
 	return u.platform
 }
 
-// Deprecated: use union.registerUsersFromConfig instead
-//func RegisterUsersFromConfig() (errors []error) {
-//	usersFromConfig := config.GetUsers()
-//	for _, u := range usersFromConfig {
-//		for p, id := range u.Git {
-//			if _, err := RegisterUser(PlatformType(p), id); err != nil {
-//				errors = append(errors, err)
-//			}
-//		}
-//	}
-//	return
-//}
-
 func RegisterUser(p PlatformType, userID string) (User, error) {
 	if _, ok := platformMap[p]; !ok {
 		return nil, fmt.Errorf("user register err: user [%v] belong to un-registered git platform [%v]", userID, p)

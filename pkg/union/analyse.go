@@ -2,6 +2,7 @@ package union
 
 import (
 	"fmt"
+
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/message"
 )
@@ -10,7 +11,8 @@ import (
 func AnalysePrCausedByWho(pr git.PullRequest) []message.Message {
 	// todo complete logic of this function
 	var messages []message.Message
-	for _, assignee := range pr.ListAssignees() {
+	//for _, assignee := range pr.ListAssignees() { // it is not easy to assign others because I only have one account
+	for _, assignee := range []git.User{pr.GetCommitter()} { // return committer and just for test
 		messages = append(messages, message.Message{
 			ToGitUser: assignee,
 			Type:      message.MessageTypeNeedReivew,

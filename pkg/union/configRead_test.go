@@ -1,24 +1,24 @@
 package union
 
 import (
-	"fmt"
+	"testing"
+
 	"github.com/devstream-io/devstream/ospp-cr-bot/config"
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/community"
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
-	"testing"
 )
 
 func TestReadUserConfig(t *testing.T) {
 	users := getUserConfigs()
 	for _, user := range users {
-		fmt.Printf("%+v\n", user)
+		t.Logf("%+v\n", user)
 	}
 }
 
 func TestReadRepoConfig(t *testing.T) {
 	repos := getRepoConfigs()
 	for _, repo := range repos {
-		fmt.Printf("%+v\n", repo)
+		t.Logf("%+v\n", repo)
 	}
 }
 

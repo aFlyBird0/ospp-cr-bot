@@ -1,8 +1,9 @@
 package githubMock
 
 import (
-	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
 	"time"
+
+	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
 )
 
 type Issue struct {
@@ -40,8 +41,8 @@ func (i *Issue) GetLabels() []string {
 	return i.Labels
 }
 
-func (i *Issue) GetAssignees() []string {
-	return []string{}
+func (i *Issue) GetAssignees() []git.User {
+	return []git.User{}
 }
 
 func (i *Issue) ListComments() []git.Comment {

@@ -62,3 +62,7 @@ func (f Client) SendMessageToUsersInGroup(message message.MessageInf, users []co
 	//TODO implement me
 	panic("implement me")
 }
+func (f Client) SendMessageToUserInGroup(message message.MessageInf, users community.User, group community.Group) error {
+	//TODO implement me
+	panic("implement me")
+}

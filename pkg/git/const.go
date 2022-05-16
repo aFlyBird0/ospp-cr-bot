@@ -13,7 +13,7 @@ const (
 	PrStateAll    PrState = ""
 	PrStateOpen   PrState = "open"
 	PrStateClosed PrState = "closed"
-	PrStateMerged PrState = "merged"
+	PrStateMerged PrState = "merged" //todo merged may be not supported by github
 )
 
 const (

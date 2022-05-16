@@ -2,7 +2,8 @@ package github
 
 import (
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
-	"github.com/google/go-github/v44/github"
+
+	"github.com/google/go-github/v42/github"
 )
 
 type Repo struct {

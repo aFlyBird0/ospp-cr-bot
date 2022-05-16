@@ -2,7 +2,6 @@ package community
 
 import "fmt"
 
-// todo
 var groups map[Type]map[string]Group
 
 func init() {

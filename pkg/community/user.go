@@ -23,19 +23,6 @@ func init() {
 	users = make(map[Type]map[string]User)
 }
 
-// Deprecated: use union.registerUsersFromConfig instead
-//func RegisterUsersFromConfig() (errors []error) {
-//	usersFromConfig := config.GetUsers()
-//	for _, u := range usersFromConfig {
-//		for c, id := range u.Community {
-//			if _, err := RegisterUser(c, id); err != nil {
-//				errors = append(errors, err)
-//			}
-//		}
-//	}
-//	return
-//}
-
 func RegisterUser(c Type, userID string) (User, error) {
 	if _, ok := communityMap[c]; !ok {
 		return nil, fmt.Errorf("user register err: user [%v] belong to un-registered community [%v]", userID, c)
