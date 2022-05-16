@@ -1,0 +1,39 @@
+platforms:
+  git:
+    github:
+      enabled: true
+      token: github-token
+    gitlab:
+      enabled: false
+      token: gitlab-token
+  community:
+    feishu:
+      enabled: true
+      token: feishu-token
+users:
+  - git:
+      github: github-user-1
+    community:
+      feishu: feishu-user-1
+  - git:
+      github: github-user-2
+    community:
+      feishu: feishu-user-2
+  - git:
+      github: github-user-3
+    community:
+      feishu: feishu-user-3
+  - git:
+      github: github-user-4
+    community:
+      feishu: feishu-user-4
+repos:
+  - platform: github
+    name: github-repo-1
+    groups:
+      feishu: feishu-group-1
+    admins:
+      - github-user-1
+    users:
+      - github-user-3
+      - github-user-4

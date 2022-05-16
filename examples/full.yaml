@@ -1,0 +1,64 @@
+env: debug
+platforms:
+  git:
+    github:
+      enabled: true
+      token: github-token
+    gitlab:
+      enabled: false
+      token: gitlab-token
+  community:
+    feishu:
+      enabled: true
+      token: feishu-token
+    dingtalk:
+      enabled: false
+      token: dingtalk-token
+users:
+  - git:
+      github: github-user-1
+      gitlab: gitlab-user-1
+    community:
+      feishu: feishu-user-1
+      dingtalk: feishu-user-1
+  - git:
+      github: github-user-2
+      gitlab: gitlab-user-2
+    community:
+      feishu: feishu-user-2
+      dingtalk: feishu-user-2
+  - git:
+      github: github-user-3
+      gitlab: gitlab-user-3
+    community:
+      feishu: feishu-user-3
+      dingtalk: feishu-user-3
+  - git:
+      github: github-user-4
+      gitlab: gitlab-user-4
+    community:
+      feishu: feishu-user-4
+      dingtalk: feishu-user-4
+repos:
+  - platform: github
+    name: github-repo-1
+    groups:
+      feishu: feishu-group-1
+      dingtalk: dingtalk-group-1
+    admins:
+      - github-user-1
+      - github-user-2
+    users:
+      - github-user-3
+      - github-user-4
+  - platform: gitlab
+    name: gitlab-repo-1
+    groups:
+      feishu: feishu-group-1
+      dingtalk: dingtalk-group-1
+    admins:
+      - gitlab-user-1
+      - gitlab-user-2
+    users:
+      - gitlab-user-3
+      - gitlab-user-4
