@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/devstream-io/devstream/ospp-cr-bot/internal/notify"
+	"github.com/devstream-io/devstream/ospp-cr-bot/internal/pkg/notify"
 )
 
 func main() {

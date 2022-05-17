@@ -8,8 +8,8 @@
 ### mock
 1. 将 `examples/mini-for-mock.yaml` 重命名为 `config.yaml` 并放置到根目录下。
 2. 将 `internal/notify/main.go` 中的  
-`import _ "github.com/devstream-io/devstream/ospp-cr-bot/internal/git/github"` 替换为，  
-`import _ "github.com/devstream-io/devstream/ospp-cr-bot/internal/git/githubMock"`
+`import _ "github.com/devstream-io/devstream/ospp-cr-bot/internal/pkg/git/github"` 替换为，  
+`import _ "github.com/devstream-io/devstream/ospp-cr-bot/internal/pkg/git/githubMock"`
 3. 运行 `cmd/main.go` 中的主函数。
 
 ## 开发进度概要
