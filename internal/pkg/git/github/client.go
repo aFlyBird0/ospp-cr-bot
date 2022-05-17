@@ -1,12 +1,12 @@
 package github
 
 import (
-	"github.com/devstream-io/devstream/ospp-cr-bot/config"
-	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
-
 	ghUtil "github.com/devstream-io/devstream/pkg/util/github"
 	"github.com/devstream-io/devstream/pkg/util/log"
 	github "github.com/google/go-github/v42/github"
+
+	"github.com/devstream-io/devstream/ospp-cr-bot/config"
+	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
 )
 
 // the way to create client is copy from devstream-io/devstream

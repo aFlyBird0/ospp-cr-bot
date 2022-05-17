@@ -3,12 +3,12 @@ package github
 import (
 	"context"
 	"fmt"
-	"github.com/devstream-io/devstream/pkg/util/log"
 	"net/http"
 	"os"
 	"testing"
 
 	"github.com/cbrgm/githubevents/githubevents"
+	"github.com/devstream-io/devstream/pkg/util/log"
 	"github.com/google/go-github/v44/github"
 )
 

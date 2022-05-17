@@ -1,11 +1,11 @@
 package feishuMock
 
 import (
+	"github.com/devstream-io/devstream/pkg/util/log"
+
 	"github.com/devstream-io/devstream/ospp-cr-bot/config"
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/community"
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/message"
-
-	"github.com/devstream-io/devstream/pkg/util/log"
 )
 
 var client *Client

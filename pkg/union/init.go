@@ -3,10 +3,10 @@ package union
 import (
 	"fmt"
 
+	"github.com/devstream-io/devstream/pkg/util/log"
+
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/community"
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
-
-	"github.com/devstream-io/devstream/pkg/util/log"
 )
 
 // union interfaces from other packages

@@ -6,13 +6,13 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/devstream-io/devstream/pkg/util/log"
+	"github.com/sirupsen/logrus"
+
 	"github.com/devstream-io/devstream/ospp-cr-bot/config"
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/community"
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/union"
-
-	"github.com/devstream-io/devstream/pkg/util/log"
-	"github.com/sirupsen/logrus"
 
 	_ "github.com/devstream-io/devstream/ospp-cr-bot/internal/pkg/community/feishuMock" // important, to call init() to register client
 	_ "github.com/devstream-io/devstream/ospp-cr-bot/internal/pkg/git/github"           // important, to call init() to register client

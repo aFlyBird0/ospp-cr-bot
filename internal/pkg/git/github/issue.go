@@ -3,8 +3,9 @@ package github
 import (
 	"time"
 
-	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
 	"github.com/google/go-github/v42/github"
+
+	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
 )
 
 type Issue struct {
