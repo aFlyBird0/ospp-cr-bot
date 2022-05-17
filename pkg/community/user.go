@@ -4,37 +4,25 @@ import (
 	"fmt"
 )
 
-type user struct {
-	userID    string
-	community Community
-}
-
-func (u *user) GetUserID() string {
-	return u.userID
-}
-
-func (u *user) OfCommunity() Community {
-	return u.community
-}
-
 var users map[Type]map[string]User
 
 func init() {
 	users = make(map[Type]map[string]User)
 }
 
-func RegisterUser(c Type, userID string) (User, error) {
-	if _, ok := communityMap[c]; !ok {
-		return nil, fmt.Errorf("user register err: user [%v] belong to un-registered community [%v]", userID, c)
+func RegisterUser(t Type, userID string) (User, error) {
+	community, ok := communityMap[t]
+	if !ok {
+		return nil, fmt.Errorf("user register err: user [%v] belong to un-registered community [%v]", userID, t)
 	}
-	if users[c] == nil {
-		users[c] = make(map[string]User)
+	u, err := community.GetUserByID(userID)
+	if err != nil {
+		return nil, fmt.Errorf("user register err: fail to fetch user [%v] of community [%v], err: %v", userID, t, err)
 	}
-	u := &user{
-		userID:    userID,
-		community: communityMap[c],
+	if users[t] == nil {
+		users[t] = make(map[string]User)
 	}
-	users[c][userID] = u
+	users[t][userID] = u
 	return u, nil
 }
 

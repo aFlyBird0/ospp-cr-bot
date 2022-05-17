@@ -14,8 +14,8 @@ import (
 	"github.com/devstream-io/devstream/pkg/util/log"
 	"github.com/sirupsen/logrus"
 
-	_ "github.com/devstream-io/devstream/ospp-cr-bot/internal/community/feishuMock" // important, to call init() to register client
-	_ "github.com/devstream-io/devstream/ospp-cr-bot/internal/git/github"           // important, to call init() to register client
+	_ "github.com/devstream-io/devstream/ospp-cr-bot/internal/pkg/community/feishuMock" // important, to call init() to register client
+	_ "github.com/devstream-io/devstream/ospp-cr-bot/internal/pkg/git/github"           // important, to call init() to register client
 )
 
 func init() {

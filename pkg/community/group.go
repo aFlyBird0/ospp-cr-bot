@@ -8,31 +8,19 @@ func init() {
 	groups = make(map[Type]map[string]Group)
 }
 
-type group struct {
-	id        string
-	community Community
-}
-
-func (g *group) GetGroupID() string {
-	return g.id
-}
-
-func (g group) OfCommunity() Community {
-	return g.community
-}
-
-func RegisterGroup(c Type, groupID string) (Group, error) {
-	if _, ok := communityMap[c]; !ok {
-		return nil, fmt.Errorf("user register err: group [%v] belong to un-registered community [%v]", groupID, c)
+func RegisterGroup(t Type, groupID string) (Group, error) {
+	community, ok := communityMap[t]
+	if !ok {
+		return nil, fmt.Errorf("user register err: group [%v] belong to un-registered community [%v]", groupID, t)
 	}
-	if groups[c] == nil {
-		groups[c] = make(map[string]Group)
+	g, err := community.GetGroupByID(groupID)
+	if err != nil {
+		return nil, fmt.Errorf("user register err: fail to fetch group [%v] of community [%v], err: %v", groupID, t, err)
 	}
-	g := &group{
-		id:        groupID,
-		community: communityMap[c],
+	if groups[t] == nil {
+		groups[t] = make(map[string]Group)
 	}
-	groups[c][groupID] = g
+	groups[t][groupID] = g
 	return g, nil
 }
 

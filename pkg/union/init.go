@@ -39,7 +39,7 @@ func Init() {
 
 	errs := registerUsersFromConfig()
 	for _, err := range errs {
-		log.Warnf("Error during init users: %v", err)
+		log.Errorf("Error during init users: %v", err)
 	}
 
 	errs, panics := initReposAndGroups()

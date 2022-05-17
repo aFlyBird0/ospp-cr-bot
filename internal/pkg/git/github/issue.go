@@ -1,9 +1,10 @@
 package github
 
 import (
+	"time"
+
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
 	"github.com/google/go-github/v42/github"
-	"time"
 )
 
 type Issue struct {
