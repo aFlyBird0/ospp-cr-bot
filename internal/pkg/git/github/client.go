@@ -46,6 +46,14 @@ func (c *Client) GetType() git.PlatformType {
 	return git.PlatformGithub
 }
 
+func (c *Client) GetUserInfoByID(id string) (git.User, error) {
+	user, _, err := c.Client.Users.Get(c.Context, id)
+	if err != nil {
+		return nil, err
+	}
+	return &User{Login: user.GetLogin()}, nil
+}
+
 func (c *Client) GetRepoInfo(repoName string) (git.Repo, error) {
 	// note: to show how interface works
 	repo, _, err := c.Repositories.Get(c.Context, c.Owner, repoName)

@@ -6,6 +6,7 @@ import "github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
 
 type Type string
 
+// todo in progress
 type MessageInf interface {
 	GetURL() string
 	GetType() Type

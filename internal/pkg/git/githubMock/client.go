@@ -21,6 +21,10 @@ func (c *Client) GetType() git.PlatformType {
 	return git.PlatformGithub
 }
 
+func (c *Client) GetUserInfoByID(id string) (git.User, error) {
+	return &User{Login: id}, nil
+}
+
 func (c *Client) GetRepoInfo(repoName string) (git.Repo, error) {
 	// just mock, this func should call GitHub api to get more repo info
 	return Repo{Name: repoName}, nil

@@ -17,7 +17,7 @@ func RegisterUser(t Type, userID string) (User, error) {
 	}
 	u, err := community.GetUserByID(userID)
 	if err != nil {
-		return nil, fmt.Errorf("user register err: fail to fetch user [%v] of community [%v], err: %v", userID, t, err)
+		return nil, fmt.Errorf("user register err: failed to fetch user [%v] of community [%v], err: %v", userID, t, err)
 	}
 	if users[t] == nil {
 		users[t] = make(map[string]User)

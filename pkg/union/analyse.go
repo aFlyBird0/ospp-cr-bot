@@ -8,6 +8,7 @@ import (
 )
 
 // AnalysePrCausedByWho Analyze PR was blocked by whom, and build message
+// todo refactor: do not return message directly, but build message in community client
 func AnalysePrCausedByWho(pr git.PullRequest) []message.Message {
 	// todo complete logic of this function
 	var messages []message.Message

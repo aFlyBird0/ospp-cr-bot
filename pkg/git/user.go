@@ -4,34 +4,25 @@ import (
 	"fmt"
 )
 
-type user struct {
-	userID   string
-	platform Platform
-}
-
 var users map[PlatformType]map[string]User
 
 func init() {
 	users = make(map[PlatformType]map[string]User)
 }
 
-func (u *user) GetUserID() string {
-	return u.userID
-}
-
-func (u *user) OfPlatform() Platform {
-	return u.platform
-}
-
-func RegisterUser(p PlatformType, userID string) (User, error) {
-	if _, ok := platformMap[p]; !ok {
-		return nil, fmt.Errorf("user register err: user [%v] belong to un-registered git platform [%v]", userID, p)
+func RegisterUser(t PlatformType, userID string) (User, error) {
+	p, ok := platformMap[t]
+	if !ok {
+		return nil, fmt.Errorf("user register err: user [%v] belongs to un-registered git platform [%v]", userID, t)
 	}
-	if _, ok := users[p]; !ok {
-		users[p] = make(map[string]User)
+	u, err := p.GetUserInfoByID(userID)
+	if err != nil {
+		return nil, fmt.Errorf("user register err: failed to fetch user  [%v] of [%v], err: [%v]", userID, t, err)
 	}
-	u := &user{userID: userID, platform: platformMap[p]}
-	users[p][userID] = u
+	if _, ok := users[t]; !ok {
+		users[t] = make(map[string]User)
+	}
+	users[t][userID] = u
 	return u, nil
 }
 

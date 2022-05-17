@@ -82,6 +82,7 @@ type Repo interface {
 
 type Platform interface {
 	GetType() PlatformType
+	GetUserInfoByID(userID string) (User, error)
 	GetRepoInfo(repoName string) (Repo, error)
 	ListRepos() []Repo
 	ListIssuesByRepo(repo Repo, filter IssueFilter) ([]Issue, error)

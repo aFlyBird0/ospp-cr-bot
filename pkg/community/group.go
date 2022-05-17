@@ -15,7 +15,7 @@ func RegisterGroup(t Type, groupID string) (Group, error) {
 	}
 	g, err := community.GetGroupByID(groupID)
 	if err != nil {
-		return nil, fmt.Errorf("user register err: fail to fetch group [%v] of community [%v], err: %v", groupID, t, err)
+		return nil, fmt.Errorf("user register err: failed to fetch group [%v] of community [%v], err: %v", groupID, t, err)
 	}
 	if groups[t] == nil {
 		groups[t] = make(map[string]Group)

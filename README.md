@@ -46,7 +46,7 @@ pkg:
 - pkg.message 正在设计，目前是放了消息相关的东西
 - pkg.union 联合了不同来源的信息与接口。如联合代码托管平台的用户和通讯平台的用户
 
-internal:
-- internal.community 各个通讯类平台的 client 实现，在 init() 中直接通过 pkg.community.RegisterCommunity() 完成注册。
-- internal.git 各个代码托管类平台的 client 实现，在 init() 中直接通过 pkg.git.RegisterPlatform() 完成注册。
-- internal.notify 暂时性的通知入口(main)
+internal.pkg:
+- internal.pkg.community 各个通讯类平台的 client 实现，在 init() 中直接通过 pkg.community.RegisterCommunity() 完成注册。
+- internal.pkg.git 各个代码托管类平台的 client 实现，在 init() 中直接通过 pkg.git.RegisterPlatform() 完成注册。
+- internal.pkg.notify 暂时性的通知入口(main)
