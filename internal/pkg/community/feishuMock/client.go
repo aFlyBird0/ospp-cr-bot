@@ -25,11 +25,11 @@ func (c *Client) GetType() community.Type {
 }
 
 func (c *Client) GetUserByID(userID string) (community.User, error) {
-	return nil, nil
+	return &User{ID: userID}, nil
 }
 
 func (c *Client) GetGroupByID(groupID string) (community.Group, error) {
-	return nil, nil
+	return &Group{ID: groupID}, nil
 }
 
 func (c *Client) SendMessageToUsers(message message.MessageInf, users []community.User) error {
