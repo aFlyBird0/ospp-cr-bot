@@ -6,10 +6,9 @@ var (
 	communityMap map[Type]Community
 )
 
-const (
-	CommunityTypeFeishu   Type = "feishu"
-	CommunityTypeDingtalk Type = "dingtalk"
-)
+//const (
+//	CommunityTypeDingtalk Type = "dingtalk"
+//)
 
 func RegisterCommunity(p Community) {
 	if communityMap == nil {

@@ -9,16 +9,16 @@ import (
 	"github.com/devstream-io/devstream/ospp-cr-bot/pkg/git"
 )
 
-// the way to create client is copy from devstream-io/devstream
-
 var client *Client
+
+const PlatformGitHub git.PlatformType = "github"
 
 type Client struct {
 	*ghUtil.Client
 }
 
 func init() {
-	if config.IsGitPlatformEnabled(string(git.PlatformGithub)) {
+	if config.IsGitPlatformEnabled(string(PlatformGitHub)) {
 		option := buildOptionFromConfig()
 		c, err := ghUtil.NewClient(option)
 		if err != nil {
@@ -30,20 +30,28 @@ func init() {
 }
 
 func buildOptionFromConfig() *ghUtil.Option {
-	owner := config.GetConfig().GetString("platforms.git.github.owner")
+	gitSubConfig := config.GetGitPlatformConfig(string(PlatformGitHub))
+	if gitSubConfig == nil {
+		log.Fatalf("failed to get github config")
+	}
+
+	org := gitSubConfig.GetString("org")
+	owner := gitSubConfig.GetString("owner")
 	if owner == "" {
 		log.Fatal("github owner is not set")
 	}
+	needAuth := gitSubConfig.GetBool("needAuth")
+	log.Debugf("github owner: [%s], github org: [%s], needAuth: [%t]", owner, org, needAuth)
 	option := &ghUtil.Option{
-		Owner: owner,
-		// todo public repo do not need auth
-		NeedAuth: true,
+		Org:      org,
+		Owner:    owner,
+		NeedAuth: needAuth,
 	}
 	return option
 }
 
 func (c *Client) GetType() git.PlatformType {
-	return git.PlatformGithub
+	return PlatformGitHub
 }
 
 func (c *Client) GetUserInfoByID(id string) (git.User, error) {

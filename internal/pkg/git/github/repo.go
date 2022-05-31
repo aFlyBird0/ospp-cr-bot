@@ -33,5 +33,5 @@ func (r Repo) GetURL() string {
 }
 
 func (r Repo) OfPlatForm() git.Platform {
-	return git.GetPlatformByType(git.PlatformGithub)
+	return git.GetPlatformByType(PlatformGitHub)
 }

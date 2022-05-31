@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
 
@@ -23,20 +24,10 @@ func init() {
 	if err := globalConfig.ReadInConfig(); err != nil {
 		panic(fmt.Errorf("Fatal error config file: %w \n", err))
 	}
+
+	logrus.SetLevel(logrus.DebugLevel)
 }
 
 func GetConfig() *Config {
 	return globalConfig
-}
-
-func IsProd() bool {
-	return globalConfig.GetString("env") == "prod"
-}
-
-func IsGitPlatformEnabled(platform string) bool {
-	return globalConfig.GetBool(fmt.Sprintf("platforms.git.%s.enabled", platform))
-}
-
-func IsCommunityEnabled(community string) bool {
-	return globalConfig.GetBool(fmt.Sprintf("platforms.community.%s.enabled", community))
 }

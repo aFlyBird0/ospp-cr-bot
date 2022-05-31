@@ -10,18 +10,20 @@ import (
 
 var client *Client
 
+const CommunityTypeFeishu community.Type = "feishu"
+
 type Client struct {
 }
 
 func init() {
-	if config.IsCommunityEnabled(string(community.CommunityTypeFeishu)) {
+	if config.IsCommunityEnabled(string(CommunityTypeFeishu)) {
 		client = &Client{}
 		community.RegisterCommunity(client)
 	}
 }
 
 func (c *Client) GetType() community.Type {
-	return community.CommunityTypeFeishu
+	return CommunityTypeFeishu
 }
 
 func (c *Client) GetUserByID(userID string) (community.User, error) {

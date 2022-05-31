@@ -2,6 +2,7 @@ platforms:
   git:
     github:
       enabled: true
+      needAuth: true
       owner: aFlyBird0
     gitlab:
       enabled: false

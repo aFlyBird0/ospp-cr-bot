@@ -41,6 +41,10 @@ github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym
 github.com/cbrgm/githubevents v1.1.2 h1:TiGRQIMZZ7D+dmbNjiH2LA86UVVhf92e9NaxNE9nwxo=
 github.com/cbrgm/githubevents v1.1.2/go.mod h1:Zae1MTTHD4DrAlX8s39zi2mUDJXcpddTFbB6yxUVZf8=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
+github.com/chyroc/go-ptr v1.6.0 h1:4GwCNrNfk4806eQKbHO2A/N/YOLW6jHIrBPWKfMe6F0=
+github.com/chyroc/go-ptr v1.6.0/go.mod h1:FKNjNg3sCLx7VhQGwuml6sITX1mvhKS0Je9uN9tt65Q=
+github.com/chyroc/lark v0.0.95 h1:/5LCYQDbUlfNjFcSmQUnawcUKr7FZkKpMk1BnAK567g=
+github.com/chyroc/lark v0.0.95/go.mod h1:Brd/ivv9Q1EFLFtsIRD6Q/AQ+MOcXvdErtV/pW5d3sc=
 github.com/chzyer/logex v1.1.10/go.mod h1:+Ywpsq7O8HXn0nuIou7OrIPyXbp3wmkHB+jjWRnGsAI=
 github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e/go.mod h1:nSuG5e5PlCu98SY8svDHJxuZscDgtXS6KTTbou5AhLI=
 github.com/chzyer/test v0.0.0-20180213035817-a1ea475d72b1/go.mod h1:Q3SI9o4m/ZMnBNeIyt5eFwwo7qiLfzFZmjNmxjkiQlU=

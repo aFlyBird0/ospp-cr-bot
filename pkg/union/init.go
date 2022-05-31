@@ -54,6 +54,7 @@ func Init() {
 }
 
 func registerUsersFromConfig() (errors []error) {
+	// feat todo: be able to read users from OWNERS file in codebase
 	usersFromConfig := getUserConfigs()
 	for _, user := range usersFromConfig {
 		gitUsers := make([]git.User, 0)

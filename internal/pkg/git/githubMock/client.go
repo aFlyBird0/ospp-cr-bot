@@ -7,18 +7,20 @@ import (
 
 var client *Client
 
+const PlatformGithub git.PlatformType = "github"
+
 type Client struct {
 }
 
 func init() {
-	if config.IsGitPlatformEnabled(string(git.PlatformGithub)) {
+	if config.IsGitPlatformEnabled(string(PlatformGithub)) {
 		client = &Client{}
 		git.RegisterPlatform(client)
 	}
 }
 
 func (c *Client) GetType() git.PlatformType {
-	return git.PlatformGithub
+	return PlatformGithub
 }
 
 func (c *Client) GetUserInfoByID(id string) (git.User, error) {

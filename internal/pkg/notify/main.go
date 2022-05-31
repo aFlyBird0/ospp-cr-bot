@@ -62,6 +62,8 @@ func NotifyPr() {
 	// todo auto change duration based on users' response
 	// todo support more activities
 
+	// todo refactor process check with stream
+
 	// todo need refactor this process
 	for _, platform := range git.GetPlatformMap() {
 		for _, repo := range union.ListRepoByGitPlatform(platform.GetType()) {

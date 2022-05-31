@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/cbrgm/githubevents v1.1.2
+	github.com/chyroc/lark v0.0.95
 	github.com/devstream-io/devstream v0.5.0
 	github.com/google/go-github/v42 v42.0.0
 	github.com/google/go-github/v44 v44.0.0

@@ -16,8 +16,7 @@ const (
 	PrStateMerged PrState = "merged" //todo merged may be not supported by github
 )
 
-const (
-	PlatformGithub PlatformType = "github"
-	PlatformGitlab PlatformType = "gitlab"
-	PlatformGitee  PlatformType = "gitee"
-)
+//const (
+//	PlatformGitlab PlatformType = "gitlab"
+//	PlatformGitee  PlatformType = "gitee"
+//)
